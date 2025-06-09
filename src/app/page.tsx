@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Text } from "./components/text";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -24,6 +25,10 @@ export default function Home() {
     }
     setExistText(existTextArray);
     setNotExistText(notExistTextArray);
+  };
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
   };
 
   return (
@@ -72,15 +77,19 @@ export default function Home() {
       <div className="grid grid-cols-2 gap-2 divide-x">
         <div>
           <h2>Những text không tồn tại trong website:</h2>
-          {notExistText.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
+          <div className="flex flex-col gap-2">
+            {notExistText.map((item, index) => (
+              <Text key={index} text={item} />
+            ))}
+          </div>
         </div>
         <div>
           <h2>Những text tồn tại trong website:</h2>
-          {existText.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
+          <div className="flex flex-col gap-2">
+            {existText.map((item, index) => (
+              <Text key={index} text={item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
