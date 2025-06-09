@@ -27,10 +27,6 @@ export default function Home() {
     setNotExistText(notExistTextArray);
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
   return (
     <div className="p-4">
       <div className="grid grid-cols-2 gap-2">
